@@ -1,0 +1,41 @@
+# calculation of madlung constant for NaCl crystal.
+# madlung constant \alpha is given by \sum_{i,j,k} $\pm$\frac{1}{\sqrt{i^2+j^2+k^2}}
+# negative sign is for (i+j+k) even where sodium lies and is positive sign for(i+j+k) is odd where chlorine lies
+# we take the reference ion as chlorine ie negative ion at (0,0,0) position
+# Using the convention of "Introduction to solid state physics" By Kittel Seventh edition 3.21 equation.
+# Here we have taken advantage of crystal symmetry. So we are dealing only with first quadrant, x-axis and x-y plane
+
+from math import sqrt
+
+class Madlung:
+    l=1000;
+    madlung = [0,0,0];
+
+    #calculation for the body lattice point in first quadrant...
+    def body:
+        for i in range(1, l+1):
+            for j in range (1, l+1):
+                for k in range (1, l+1):
+                    madlung[0] += ((-1)**(i+j+k+1)) / sqrt( i*i + j*j + k*k )
+                    print i
+
+        return madlung[0]
+
+    # for the axis lattice points x- axis
+    def x:
+        for i in range (1,l+1):
+            madlung[1] += ((-1)**(i+1)) / sqrt(i*i)
+
+        return madlung[1]
+
+    # for the x-y plane lattice points
+    def xy:
+        for i in range (1, l+1):
+            for j in range(1,l+1):
+                madlung[2] += ((-1)**(i + j + 1)) / sqrt( i*i + j*j )
+
+        return madlung[2]
+
+final_madlung = (8 * Mathlung.body) + (12 * Mathlung.x) + (6 * Mathlung.xy);
+
+print "The required value of the madlung constant for NaCl is %f" %( final_madlung )
