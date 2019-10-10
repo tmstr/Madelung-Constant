@@ -1,3 +1,3 @@
 # Madelung-Constant
 
-The Madelung constant is used to determine the electrostatic potential of an ion inside of a crystal lattice structure by approximating the ions by point charges.
+This is code written in nim (nimrod) to determine the Madelung constant. This constant is used to determine the electrostatic potential of an ion inside of a crystal lattice structure by approximating the ions by point charges.
